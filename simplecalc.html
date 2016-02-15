@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="simpleCalc">
+
+First variable: <input type="text" ng-model="firstVar"><br>
+<br>
+Second variable: <input type="text" ng-model="secondVar"><br>
+<br>
+<button ng-click="add()">Add</button>
+<button ng-click="subtract()">Subtract</button>
+<button ng-click="multiply()">Multipy</button>
+<button ng-click="divide()">Divide</button>
+<button ng-click="result = 0">Clear</button>
+<br>
+<br>
+<button ng-click="exponent()">Power</button>
+<br>
+<br>
+Final Result:
+<br>
+{{ result }}
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('simpleCalc', function($scope) {
+    $scope.firstVar = "0";
+    $scope.secondVar = "0";
+    $scope.result = "0";
+
+
+    $scope.add = function(){
+    $scope.result = (parseFloat($scope.firstVar) + parseFloat($scope.secondVar));
+    }
+
+    $scope.subtract = function(){
+    $scope.result = (parseFloat($scope.firstVar) - parseFloat($scope.secondVar));
+    }
+
+    $scope.multiply = function(){
+    $scope.result = (parseFloat($scope.firstVar) * parseFloat($scope.secondVar));
+    }
+
+    $scope.divide = function(){
+    $scope.result = (parseFloat($scope.firstVar) / parseFloat($scope.secondVar));
+    }
+
+    $scope.exponent = function(){
+	$scope.result = Math.pow((parseInt($scope.firstVar)),(parseInt($scope.secondVar)));
+    }
+
+});
+</script>
+
+</body>
+</html>
